@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+
+    <title>SQL Formatter</title>
+    <meta property="og:title" content="SQL Formatter"/>
+
+    <meta name="description" content="A whitespace formatter for different query languages"/>
+    <meta
+            property="og:description"
+            content="A whitespace formatter for different query languages"
+    />
+    <meta property="og:url" content="https://sql-formatter-org.github.io/sql-formatter"/>
+
+    <link rel="shortcut icon" href="./prettier-sql-clean.svg"/>
+    <link href="css/google.fonts.css?family=Roboto+Mono" rel="stylesheet"/>
+    <link href="css/index.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/default.min.css">
+
+</head>
+
+<body>
+<header>
+    <img src="./prettier-sql-clean.svg" height="32" width="32" alt="logo"/>
+    <h1 class="title">SQL格式化</h1>
+</header>
+<main>
+    <aside class="options-menu">
+        <h3 style="margin: 0.5rem 0">参数设置</h3>
+        <div class="select-wrapper">
+            <article class="config">
+                <label for="tabWidth">Tab width:</label>
+                <input type="number" id="tabWidth" name="tabWidth" min="1" max="80" value="2"/>
+            </article>
+            <article class="config">
+                <label for="useTabs">Use tabs</label>
+                <input type="checkbox" id="useTabs" name="useTabs"/>
+            </article>
+            <article class="config">
+                <label for="language">Language:</label>
+                <select id="language">
+                    <option value="sql">SQL</option>
+                    <!-- dialects -->
+                    <option value="redshift">AWS Redshift</option>
+                    <option value="bigquery">BigQuery</option>
+                    <option value="db2">DB2</option>
+                    <option value="hive">Hive</option>
+                    <option value="mariadb">MariaDB</option>
+                    <option value="mysql">MySQL</option>
+                    <option value="n1ql">N1QL</option>
+                    <option value="plsql">PL/SQL</option>
+                    <option value="postgresql">PostgreSQL</option>
+                    <option value="singlestoredb">SingleStoreDB</option>
+                    <option value="snowflake">Snowflake</option>
+                    <option value="spark">Spark</option>
+                    <option value="sqlite">SQLite</option>
+                    <option value="tsql">Transact-SQL</option>
+                    <option value="trino">Trino</option>
+                </select>
+            </article>
+            <article class="config">
+                <label for="keywordCase">Case:</label>
+                <select id="keywordCase">
+                    <option value="preserve">Preserve</option>
+                    <option value="upper">Uppercase</option>
+                    <option value="lower">Lowercase</option>
+                </select>
+            </article>
+            <article class="config">
+                <label for="indentStyle">Indentation style:</label>
+                <select id="indentStyle">
+                    <option value="standard">Standard</option>
+                    <option value="tabularLeft">Tabular, Left</option>
+                    <option value="tabularRight">Tabular, Right</option>
+                </select>
+            </article>
+            <article class="config">
+                <label for="logicalOperatorNewline">AND/OR newlines:</label>
+                <select id="logicalOperatorNewline">
+                    <option value="before">before</option>
+                    <option value="after">after</option>
+                </select>
+            </article>
+            <article class="config">
+                <label for="tabulateAlias">Align aliases</label>
+                <input type="checkbox" id="tabulateAlias" name="tabulateAlias"/>
+            </article>
+            <article class="config">
+                <label for="commaPosition">Comma position:</label>
+                <select id="commaPosition">
+                    <option value="after">After</option>
+                    <option value="before">Before</option>
+                    <option value="tabular">Tabular</option>
+                </select>
+            </article>
+            <article class="config">
+                <label for="expressionWidth">Expression width:</label>
+                <input
+                        type="number"
+                        id="expressionWidth"
+                        name="expressionWidth"
+                        min="0"
+                        max="200"
+                        value="50"
+                />
+            </article>
+            <article class="config">
+                <label for="lineBetweenQueries">Lines between queries:</label>
+                <input
+                        type="number"
+                        id="lineBetweenQueries"
+                        name="lineBetweenQueries"
+                        min="0"
+                        max="5"
+                        value="1"
+                />
+            </article>
+            <article class="config">
+                <label for="denseOperators">Dense operators</label>
+                <input type="checkbox" id="denseOperators" name="denseOperators"/>
+            </article>
+            <article class="config">
+                <label for="newlineBeforeSemicolon">Semicolon on separate line</label>
+                <input type="checkbox" id="newlineBeforeSemicolon" name="newlineBeforeSemicolon"/>
+            </article>
+        </div>
+    </aside>
+    <div class="staging">
+        <section class="input">
+          <textarea id="input" autofocus wrap="off">select * from users;</textarea
+          >
+        </section>
+        <section class="output">
+            <pre>
+                <code class="sql">
+                    <textarea id="output" readonly wrap="off"></textarea>
+                </code>
+            </pre>
+            <div id="error" class="error"></div>
+        </section>
+    </div>
+</main>
+
+<script type="text/javascript" src="js/sql-formatter.min.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/lib/highlight.min.js"></script>
+<script>
+    // document.addEventListener('DOMContentLoaded', (event) => {
+    //     document.querySelectorAll('pre code').forEach((block) => {
+    //         hljs.highlightBlock(block);
+    //     });
+    // });
+    hljs.highlightAll();
+</script>
+</body>
+</html>
