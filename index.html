@@ -17,8 +17,7 @@
     <link rel="shortcut icon" href="./prettier-sql-clean.svg"/>
     <link href="css/google.fonts.css?family=Roboto+Mono" rel="stylesheet"/>
     <link href="css/index.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/default.min.css">
-
+    <link href="css/androidstudio.css" rel="stylesheet"/>
 </head>
 
 <body>
@@ -27,7 +26,7 @@
     <h1 class="title">SQL格式化</h1>
 </header>
 <main>
-    <aside class="options-menu">
+    <aside class="options-menu" style="display: none">
         <h3 style="margin: 0.5rem 0">参数设置</h3>
         <div class="select-wrapper">
             <article class="config">
@@ -129,29 +128,21 @@
     </aside>
     <div class="staging">
         <section class="input">
-          <textarea id="input" autofocus wrap="off">select * from users;</textarea
+          <textarea id="input" autofocus wrap="off">select * from t;</textarea
           >
         </section>
         <section class="output">
-            <pre>
-                <code class="sql">
-                    <textarea id="output" readonly wrap="off"></textarea>
-                </code>
-            </pre>
+            <textarea id="output" readonly wrap="off"></textarea>
+            <div id="output2" class="output"></div>
             <div id="error" class="error"></div>
         </section>
     </div>
 </main>
 
+<script src="js/highlight.min.js"></script>
 <script type="text/javascript" src="js/sql-formatter.min.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/lib/highlight.min.js"></script>
 <script>
-    // document.addEventListener('DOMContentLoaded', (event) => {
-    //     document.querySelectorAll('pre code').forEach((block) => {
-    //         hljs.highlightBlock(block);
-    //     });
-    // });
     hljs.highlightAll();
 </script>
 </body>
