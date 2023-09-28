@@ -56,7 +56,7 @@ article.config input[type='number'] {
 }
 
 .staging {
-    width: 89%;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -68,6 +68,7 @@ article.config input[type='number'] {
     align-items: stretch;
     width: 40%;
     height: 100%;
+    overflow: auto;
     /*border-left: 2px solid #8dc63f;*/
 }
 
@@ -84,11 +85,22 @@ article.config input[type='number'] {
     width: 60%;
     height: 100%;
     border-left: 2px solid #D4d4d4;
+    overflow: auto;
+    /*position: absolute;*/
     /*border-left: 2px solid #8dc63f;*/
     /*color: #fff;*/
     /*background-color: #333;*/
     /*background-color: #Efffff;*/
 }
+
+.output::-webkit-scrollbar {
+    direction: rtl;
+}
+
+
+/*#output2 {*/
+/*    overflow-y: auto*/
+/*}*/
 
 
 textarea {

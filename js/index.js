@@ -1,7 +1,6 @@
 const attachFormat = () => {
     const input = document.getElementById('input');
     const output = document.getElementById('output');
-    const output2 = document.getElementById('output2');
     const error = document.getElementById('error');
 
     const language = document.getElementById('language');
@@ -17,19 +16,12 @@ const attachFormat = () => {
     const denseOperators = document.getElementById('denseOperators');
     const newlineBeforeSemicolon = document.getElementById('newlineBeforeSemicolon');
 
-    function showOutput(text) {
-        output.value = text;
-        output.style.display = 'block';
-        error.style.display = 'none';
-    }
 
-    function showOutput2(text) {
-        const htmlText = escapeTextToHtml(text);
-        //console.log(htmlText)
-        output2.innerHTML = htmlText;
-        output2.style.display = 'block';
-        output.style.display = 'none';
-        error.style.display = 'none';
+
+    function showOutput(text) {
+        output.innerHTML = escapeTextToHtml(text);
+        output.style.display = 'block';
+        //error.style.display = 'none';
     }
 
     function escapeTextToHtml(text) {
@@ -83,12 +75,10 @@ const attachFormat = () => {
                 denseOperators: false,
                 newlineBeforeSemicolon: false,
             };
-            console.log(config)
-
             var formatValue = sqlFormatter.format(input.value, config);
             formatValue = formatValue.replaceAll(' ', '\t')
             const hl = hljs.highlight(formatValue, {language: 'sql'}).value;
-            showOutput2(hl);
+            showOutput(hl);
         } catch (e) {
             if (e instanceof sqlFormatter.ConfigError) {
                 showError(`<h2>Configuration error</h2><p>${e.message}</p>`);
@@ -105,7 +95,7 @@ const attachFormat = () => {
 // <pre>${e.stack.toString()}</pre>
 // `
 //                 );
-                showOutput2("SQL语法错误:\n\n" + input.value);
+                showOutput("SQL语法错误:\n\n" + input.value);
 
             }
         }
